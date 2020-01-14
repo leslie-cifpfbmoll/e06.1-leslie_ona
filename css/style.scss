@@ -1,3 +1,5 @@
+//partials
+@import "header";
 //variables 
 $fuente: Arial,
 Helvetica,
@@ -147,24 +149,6 @@ h1 {
         text-shadow: 0 1px #f8ffff;
         font-size: 30px;
         font-family: $fuente2;
-    }
-}
-
-//nesting 
-footer {
-    .mini-events {
-        grid-column: 2/3;
-        grid-row: 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-column-gap: 15px;
-    }
-    .footer {
-        grid-column: 2/3;
-        grid-row: 2;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
     }
 }
 
