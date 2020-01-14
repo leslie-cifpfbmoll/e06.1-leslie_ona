@@ -1,0 +1,227 @@
+//variables 
+$fuente: Arial,
+Helvetica,
+sans-serif;
+$fuente2: 'Times New Roman',
+Times,
+serif;
+;
+//mixin
+@mixin pagina($size) {
+    width: $size;
+    height: $size;
+}
+
+//nesting
+body {
+    background: #e8e1d1;
+    color: #7c6b4f;
+    margin: 0px;
+    font-family: $fuente;
+    //parent selector
+    .pagina {
+        display: grid;
+        background: url(../images/bg-body.jpg) repeat-x center top;
+        overflow: hidden;
+        @include pagina(100%);
+        grid-template-rows: 200px 60px auto 473px;
+        .logo {
+            grid-row: 1;
+            justify-self: center;
+            height: auto;
+            margin: 65px 0 0;
+            margin-bottom: 20px;
+        }
+        nav {
+            grid-row: 2;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 800px;
+            justify-self: center;
+        }
+        .body {
+            grid-row: 3;
+            display: grid;
+            grid-template-columns: 1fr 950px 1fr;
+            grid-template-rows: 690px;
+        }
+        footer {
+            grid-row: 4;
+            display: grid;
+            grid-template-columns: 1fr 950px 1fr;
+            grid-template-rows: 370px 200px;
+            background: url(../images/bg-footer.jpg) repeat-x center bottom;
+        }
+    }
+}
+
+//nesting
+nav {
+    a {
+        color: #164773;
+        text-align: center;
+        text-decoration: none;
+        padding: 7px 15px;
+        height: 20px;
+        border: 1px solid black;
+        &:first-child {
+            color: #3e3524;
+        }
+        &:hover {
+            color: #3e3524;
+        }
+    }
+}
+
+h3 {
+    padding: 0px;
+    margin: 0px;
+}
+
+//nesting
+body {
+    .events {
+        grid-row: 1;
+        grid-column: 2/3;
+        background: #f6efe5;
+        border: 1px solid #e0dacc;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        grid-column-gap: 23px;
+        padding-left: 23px;
+        padding-right: 23px;
+        article {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+    }
+}
+
+//nesting
+.events {
+    img {
+        width: 100%;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+    .titulo {
+        text-align: center;
+    }
+    span {
+        color: #3e3524;
+        display: block;
+        font-size: 16px;
+        font-family: $fuente2;
+        font-weight: bold;
+        padding: 0 0 5px;
+        text-transform: uppercase;
+    }
+    p a {
+        color: #69614a;
+    }
+    a.readmore {
+        color: #69614a;
+        height: 24px;
+        left: 90px;
+        text-decoration: none;
+        text-align: center;
+        width: 142px/280px *100%;
+        //operators 142px/950px *100%
+        border: 1px solid #706758;
+    }
+}
+
+//nesting
+h1 {
+    a {
+        color: #0d4d79;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-shadow: 0 1px #f8ffff;
+        font-size: 30px;
+        font-family: $fuente2;
+    }
+}
+
+//nesting 
+footer {
+    .mini-events {
+        grid-column: 2/3;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 15px;
+    }
+    .footer {
+        grid-column: 2/3;
+        grid-row: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+//nesting
+.footer {
+    .connect {
+        color: #988878;
+        a {
+            //extend es el mismo color pero cambia la decoracion 
+            @extend .connect;
+            text-decoration: none;
+            &:hover {
+                //extend es el mismo color pero cambia la decoracion 
+                @extend .connect;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+//mixin a la primera imagen del footer definiendo su tamaño
+@mixin size-img {
+    width: 100%;
+    height: 200px;
+}
+
+//nesting
+.mini-events {
+    article {
+        div {
+            display: flex;
+            flex-direction: column;
+            // operators
+            height: 275px/350px*100%;
+            // operators 275px/350px*100%
+            background: #f6efe5;
+            padding-left: 15px;
+        }
+        &:first-child img {
+            @include size-img;
+        }
+        span {
+            font-size: 13px;
+        }
+        a {
+            color: #69614a;
+            text-decoration: none;
+            font-size: small;
+        }
+    }
+    h3 {
+        color: #0D4D79;
+        font-family: $fuente2;
+        font-size: 20px;
+        text-indent: 15px;
+        text-shadow: 0 1px #F8FFFF;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
